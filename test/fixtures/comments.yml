@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyText
-  user: one
-  project: one
+q0:
+  content: What's the status here @dave?
+  user: paul
+  project: zero
 
-two:
-  content: MyText
-  user: two
-  project: two
+a0:
+  content: All good @Paul!
+  user: dave
+  project: zero
