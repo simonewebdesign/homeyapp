@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+zero:
+  name: Project Zero
+  status: in_progress
+
+one:
+  name: Project One
+  status: not_started
