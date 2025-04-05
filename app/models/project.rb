@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  audited only: :status
   validates :name, presence: true, uniqueness: true
   enum :status, {
          not_started: "not_started",
