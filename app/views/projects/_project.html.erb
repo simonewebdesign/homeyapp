@@ -9,7 +9,18 @@
         <li>
           <%= render StatusBadgeComponent.new(status: change[:status][0]) %> ⇢
           <%= render StatusBadgeComponent.new(status: change[:status][1]) %> —
-          <%= change[:created_at] %>
+          <time><%= change[:created_at] %></time>
+      <% end %>
+    </ol>
+  <% end %>
+
+  <% if @comments.present? %>
+    <h2 class="text-2xl">Comments</h2>
+    <ol>
+      <% @comments.each do |comment| %>
+        <li>
+          <pre><%= comment.content %></pre>
+          <time><%= comment.created_at %></time>
       <% end %>
     </ol>
   <% end %>

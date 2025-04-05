@@ -16,6 +16,8 @@ class ProjectsController < ApplicationController
         created_at: audit.created_at.strftime("%d/%m/%Y %H:%M:%S"),
       }
     end
+
+    @comments = @project.comments
   end
 
   # GET /projects/new
