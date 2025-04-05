@@ -1,6 +1,9 @@
 <div id="<%= dom_id project %>" class="w-full sm:w-auto my-5 space-y-5">
   <h1 class="inline-block text-4xl"><%= project.name %></h1>
+
   <%= render StatusBadgeComponent.new(status: project.status) %>
+
+<%= link_to "Edit", edit_project_path(project), class: "w-full sm:w-auto text-center rounded-md px-3 py-2 bg-gray-100 hover:bg-gray-50 inline-block font-small" %>
 
   <% if @status_changes.present? %>
     <h2 class="text-2xl">Project history</h2>
