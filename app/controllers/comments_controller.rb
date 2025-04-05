@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_project
 
   # GET /comments or /comments.json
   def index
@@ -25,7 +26,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: "Comment was successfully created." }
+        format.html { redirect_to [@project, @comment], notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: "Comment was successfully updated." }
+        format.html { redirect_to [@project, @comment], notice: "Comment was successfully updated." }
         format.json { render :show, status: :ok, location: @comment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +53,24 @@ class CommentsController < ApplicationController
     @comment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to comments_path, status: :see_other, notice: "Comment was successfully destroyed." }
+      format.html { redirect_to project_comments_path(@project), status: :see_other, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_comment
-      @comment = Comment.find(params.expect(:id))
-    end
 
-    # Only allow a list of trusted parameters through.
-    def comment_params
-      params.expect(comment: [ :content, :user_id, :project_id ])
-    end
+  def set_project
+    @project ||= Project.find(params.expect(:project_id))
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params.expect(:id))
+  end
+
+  # Only allow a list of trusted parameters through.
+  def comment_params
+    params.expect(comment: [:content, :user_id, :project_id])
+  end
 end
