@@ -8,6 +8,14 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
+    # E.g.: [{status: ["not_started", "in_progress"], created_at: "05/04/2025 16:29:31"},
+    #        {status: ["in_progress", "done"], created_at: "05/04/2025 16:30:09"}]
+    @status_changes = @project.audits.select(:audited_changes, :created_at).map do |audit|
+      {
+        status: audit.audited_changes["status"],
+        created_at: audit.created_at.strftime("%d/%m/%Y %H:%M:%S"),
+      }
+    end
   end
 
   # GET /projects/new
