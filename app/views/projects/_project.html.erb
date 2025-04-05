@@ -6,7 +6,10 @@
     <h2 class="text-2xl">Project history</h2>
     <ol>
       <% @status_changes.each do |change| %>
-        <li><%= change[:status][0] %> -> <%= change[:status][1] %> - <%= change[:created_at] %>
+        <li>
+          <%= render StatusBadgeComponent.new(status: change[:status][0]) %> ⇢
+          <%= render StatusBadgeComponent.new(status: change[:status][1]) %> —
+          <%= change[:created_at] %>
       <% end %>
     </ol>
   <% end %>
