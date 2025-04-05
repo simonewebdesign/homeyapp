@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
       }
     end
 
-    @comments = @project.comments
+    @comments = @project.comments.includes(:user)
   end
 
   # GET /projects/new

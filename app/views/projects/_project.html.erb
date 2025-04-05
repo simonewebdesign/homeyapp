@@ -27,8 +27,10 @@
     <ol>
       <% @comments.each do |comment| %>
         <li>
+          <strong><%= comment.user.display_name %></strong> said:
           <pre><%= comment.content %></pre>
-          <time><%= comment.created_at.strftime("%d/%m/%Y %H:%M:%S") %></time>
+          <time class="text-sm text-gray-500"><%= comment.created_at.strftime("%d/%m/%Y %H:%M:%S") %></time>
+        </li>
       <% end %>
     </ol>
   <% end %>
