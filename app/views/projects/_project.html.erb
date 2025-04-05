@@ -28,7 +28,7 @@
       <% @comments.each do |comment| %>
         <li>
           <pre><%= comment.content %></pre>
-          <time><%= comment.created_at %></time>
+          <time><%= comment.created_at.strftime("%d/%m/%Y %H:%M:%S") %></time>
       <% end %>
     </ol>
   <% end %>
