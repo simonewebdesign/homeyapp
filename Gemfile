@@ -53,3 +53,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "audited", "~> 5.8"
