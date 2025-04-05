@@ -5,14 +5,19 @@
 
 <%= link_to "Edit", edit_project_path(project), class: "w-full sm:w-auto text-center rounded-md px-3 py-2 bg-gray-100 hover:bg-gray-50 inline-block font-small" %>
 
-  <% if @status_changes.present? %>
+  <% if @status_changes.any? %>
     <h2 class="text-2xl">Project history</h2>
     <ol>
       <% @status_changes.each do |change| %>
         <li>
-          <%= render StatusBadgeComponent.new(status: change[:status][0]) %> ⇢
-          <%= render StatusBadgeComponent.new(status: change[:status][1]) %> —
+          <% if change[:status].respond_to?(:each) %>
+            <%= render StatusBadgeComponent.new(status: change[:status][0]) %> ⇢
+            <%= render StatusBadgeComponent.new(status: change[:status][1]) %> —
+          <% else %>
+            <%= render StatusBadgeComponent.new(status: change[:status]) %> —
+          <% end %>
           <time><%= change[:created_at] %></time>
+        </li>
       <% end %>
     </ol>
   <% end %>
