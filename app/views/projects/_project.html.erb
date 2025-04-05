@@ -1,6 +1,12 @@
 <div id="<%= dom_id project %>" class="w-full sm:w-auto my-5 space-y-5">
-  <h1 class="font-bold text-4xl"><%= project.name %></h1>
-  <%= project.status %>
+  <h1 class="inline-block text-4xl"><%= project.name %></h1>
+  <%= tag.span class: ["inline-block text-xs font-medium ml-2 me-2 px-2.5 py-0.5 rounded-sm", {
+    "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300": project.status == "not_started",
+    "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300": project.status == "in_progress",
+    "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300": project.status == "done"
+  }] do %>
+    <%= project.status.humanize %>
+  <% end %>
 
   <% if @status_changes.present? %>
     <h2 class="text-2xl">Project history</h2>
