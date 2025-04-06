@@ -17,12 +17,12 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create comment" do
+  test "should create comment and redirect to project" do
     assert_difference("Comment.count") do
       post project_comments_url(@project), params: { comment: { content: @comment.content, project_id: @project.id, user_id: @comment.user_id } }
     end
 
-    assert_redirected_to project_comment_url(@project, Comment.last)
+    assert_redirected_to project_url(@project)
   end
 
   test "should show comment" do
