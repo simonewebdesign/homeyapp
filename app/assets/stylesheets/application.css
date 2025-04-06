@@ -8,3 +8,9 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+ pre {
+    display: block;
+    margin-bottom: 1rem;
+    white-space: pre-wrap;
+ }
