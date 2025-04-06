@@ -21,7 +21,7 @@ simone = User.find_or_create_by!(email_address: "simone@example.com", display_na
   user.password = "Password123!"
 end
 
-otis = User.find_or_create_by!(email_address: "otis@example.com", display_name: "Otis (CTO") do |user|
+otis = User.find_or_create_by!(email_address: "otis@example.com", display_name: "Otis (CTO)") do |user|
   user.password = "Password123!"
 end
 
@@ -165,6 +165,18 @@ Comment.create!(
   user: romney,
   project: project_conversation,
   content: "Sounds good.",
+)
+
+Comment.create!(
+  user: simone,
+  project: project_conversation,
+  content: "Do we need an API for this?",
+)
+
+Comment.create!(
+  user: romney,
+  project: project_conversation,
+  content: "No, not really. We'll just need a way to store the conversation history and a way to display it. We can use a simple Rails app for that.",
 )
 
 Comment.create!(
