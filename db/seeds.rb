@@ -9,24 +9,28 @@
 #   end
 
 # Create users
-ashley = User.find_or_create_by!(email_address: "ashley@example.com", display_name: "Ashley") do |user|
-  user.password = "password123"
+User.find_or_create_by!(email_address: "admin@example.com", display_name: "Admin") do |user|
+  user.password = "Password123!"
 end
 
-simone = User.find_or_create_by!(email_address: "simone@example.com", display_name: "Simone") do |user|
-  user.password = "password123"
+ashley = User.find_or_create_by!(email_address: "ashley@example.com", display_name: "Ashley (Project Manager)") do |user|
+  user.password = "Password123!"
 end
 
-otis = User.find_or_create_by!(email_address: "otis@example.com", display_name: "Otis") do |user|
-  user.password = "password123"
+simone = User.find_or_create_by!(email_address: "simone@example.com", display_name: "Simone (Developer)") do |user|
+  user.password = "Password123!"
 end
 
-andrea = User.find_or_create_by!(email_address: "andrea@example.com", display_name: "Andrea") do |user|
-  user.password = "password123"
+otis = User.find_or_create_by!(email_address: "otis@example.com", display_name: "Otis (CTO") do |user|
+  user.password = "Password123!"
 end
 
-romney = User.find_or_create_by!(email_address: "romney@example.com", display_name: "Romney") do |user|
-  user.password = "password123"
+andrea = User.find_or_create_by!(email_address: "andrea@example.com", display_name: "Andrea (Designer)") do |user|
+  user.password = "Password123!"
+end
+
+romney = User.find_or_create_by!(email_address: "romney@example.com", display_name: "Romney (Lead Developer)") do |user|
+  user.password = "Password123!"
 end
 
 # Create projects
@@ -184,7 +188,7 @@ Comment.create!(
 Comment.create!(
   user: romney,
   project: project_conversation,
-  content: "You're the expert here. Just remember KISS and YAGNI. And don't forget to add tests.",
+  content: "It's a simple Rails app, nothing fancy. I'd consider adding the Audited gem to track project status changes. Anyway, you're the expert here. Just remember KISS and YAGNI. And don't forget to add tests.",
 )
 
 Comment.create!(
