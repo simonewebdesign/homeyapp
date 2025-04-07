@@ -3,56 +3,58 @@
 These are some of the questions that popped in my head while executing the task, along with some of the assumptions I made. Click on a question to expand it and see my thoughts (i.e. the hypothetical answer I might have expected from a colleague).
 
 <details>
-  <summary>Why are we building this?</summary>
+  <summary><strong>Why are we building this?</strong></summary>
 
-  Somewhat a bizarre question, as actual the answer is obviously "It's just a tech task". But if we were to pretend that this was a serious project built for customers, then this is actually an obvious question to make, and the answer might be "because we need a better way of tracking our countless projects".
+  It might seem like a strange question, since the obvious answer is, "It's just a tech task." But if we were to treat this as a real project for customers, the question actually makes sense, and the answer could be something like, "We need a better way to track our many projects."
 
-  Note that, considering the document says to "take the approach you would normally take in order to build the right product for the company", I've assumed that this was a serious project, internal to the company, and the rest of the questions/answers reflect this.
+  The instructions say to "take the approach you would normally take to build the right product for the company". For the sake of simplicity, I’ve assumed this is an internal project, and the rest of my approach and answers reflect that assumption.
 </details>
 
 <details>
-  <summary>What's the problem we're trying to solve?</summary>
+  <summary><strong>What's the problem we're trying to solve?</strong></summary>
 
-  This question simply tries to dig more deeply into the requirements. Again, whilst the actual answer might very well be that "it's just a simple tech test and there's no real problem to solve", if I had to pretend that I was building a serious project, I would definitely ask such question, and hopefully start a productive conversation with the stakeholders in order to gather requirements and improve my understanding of the product.
+  This question is really about getting a deeper understanding of the requirements. While the answer might simply be that "it's just a basic tech test with no real problem to solve," if I were working on a serious project, I'd definitely ask questions like this. It would help spark a productive conversation with stakeholders, allowing me to gather requirements and get a clearer understanding of the product.
 </details>
 
 <details>
-  <summary>Who's the target persona?</summary>
+  <summary><strong>Who's the target persona?</strong></summary>
 
   A follow-up question to the above, simply trying to understand who the ideal user would be. In a real-world scenario it would be important to know this, in order to build the right product. A hypothetical answer from a colleague might be: "it's for internal use, so anyone in the company could use it, but in particular it's for our team to track changes to the projects we work on".
 </details>
 
 <details>
-  <summary>Should I replicate the same tech stack from the "About Us"?</summary>
+  <summary><strong>Should I replicate the same tech stack from the "About Us"?</strong></summary>
 
-  Since there's a link to the tech stack highlighting tools and principles, and had I been a colleague myself, I would have assumed that we wanted to follow these as closely as possible, for consistency. However, with this being a simple tech test (i.e. not actually a real project) on which I shouldn't spend more than 3 hours, I thought it would also be fair to assume the contrary, to an extent. The task clearly says to "Use Ruby on Rails", but it says nothing else in terms of tech stack, so for the sake of simplicity and speed I decided to stick with the Rails defaults for the most part (e.g. ERB over Slim, Minitest over RSpec, no JS or Turbo, and no linter/formatter other than the one living in my editor), but I did add Tailwind and ViewComponent because I'm familiar with them and I thought it would be beneficial to include them.
+  Since I received a link outlining the tech stack and the guiding principles, if I were a colleague, I would have assumed the goal was to adhere to those principles as closely as possible for consistency. However, given that this is a tech test (and not a full-fledged project) with a suggested time limit of 3 hours, I thought it was reasonable to assume I didn't need to fully replicate the exact tech stack—at least not in every detail.
+
+  The task explicitly asks to "Use Ruby on Rails," but doesn't specify anything further about the tech stack. So, for simplicity and efficiency, I opted to stick with Rails defaults (such as ERB instead of Slim, Minitest instead of RSpec, no JavaScript or Turbo, and no additional linters/formatters outside of what my editor provides). However, I did incorporate Tailwind and ViewComponent because I'm familiar with them and believed they would add value to the project.
 </details>
 
 <details>
-  <summary>What would the ER diagram look like?</summary>
+  <summary><strong>What would the ER diagram look like?</strong></summary>
 
-  Hypothetical answer: There are many ways to approach this, but don't make it any more complicated than it has to be. Entities could simply be:
+  Hypothetical answer: There are several ways to approach this, but let's keep it simple. The key entities could be:
 
   - User
   - Project
   - Comment
 
-  In terms of relationship, a Project has many Comments, but one Comment belongs to one Project and one Project only (N:1). Same between a User and a Comment: a user can make many Comments, but one Comment belongs to a particular User only (N:1). One pic is worth a thousand words, so here's the diagram:
+  In terms of relationships, a Project can have many Comments, but each Comment belongs to one and only one Project (N:1). Similarly, a User can create many Comments, but each Comment is associated with just one User (N:1). A picture is worth a thousand words, so here’s a diagram to illustrate:
 
-  ![](INSERT_PIC_HERE)
+  ![Entity Relationship Diagram](https://raw.githubusercontent.com/simonewebdesign/homeyapp/refs/heads/main/ER-diagram.png)
 
 </details>
 
 <details>
-  <summary>What are the possible statuses of a project?</summary>
+  <summary><strong>What are the possible statuses of a project?</strong></summary>
 
-  For simplicity assume just "Not started", "In progress", and "Done".
+  For simplicity, let's assume the only states are "Not started," "In progress," and "Done."
 
-  In a real-world scenario there could be many more, and one would ideally have a state machine handling all the possible state transitions, but for the sake of simplicity I'd just go for the above.
+  In a real-world scenario, there could be many more states, and ideally, a state machine would handle all the possible transitions. However, for the sake of simplicity, I’ll stick with the three mentioned above.
 </details>
 
 <details>
-  <summary>Is there a default project status?</summary>
+  <summary><strong>Is there a default project status?</strong></summary>
 
   Assume a project is "Not started" by default.
 
@@ -64,7 +66,7 @@ These are some of the questions that popped in my head while executing the task,
 </details>
 
 <details>
-  <summary>Do we need user authentication?</summary>
+  <summary><strong>Do we need user authentication?</strong></summary>
 
   Yes. Most respectable SaaS apps have it, and nowadays it's pretty simple to do with `rails generate authentication`.
 
@@ -72,27 +74,24 @@ These are some of the questions that popped in my head while executing the task,
 </details>
 
 <details>
-  <summary>What's the main user flow (i.e. the "happy path")?</summary>
+  <summary><strong>What's the main user flow (i.e. the "happy path")?</strong></summary>
 
-  A classic UX would be, right after authentication, to see a nice dashboard with a bunch of data in it. For this simple exercise don't build a dashboard, but:
+  A typical UX would involve showing a nice dashboard with data immediately after authentication. For this simple exercise, however, you don’t need to build a full dashboard. Instead, please follow these acceptance criteria (in this exact order):
 
-  ### If there are any "active" projects (i.e. projects that have "in_progress" status):
+  ##### If there are any "active" projects (i.e., projects with an "in_progress" status):
+  Redirect to the most recent one.
 
-  Redirect to the **most recent** one.
+  ##### If there are no "active" projects:
+  Redirect to the first available project you can find.
 
-  ### If there are no "active" projects:
-
-  Redirect to the first project you can find.
-
-  ### If there are no projects:
-
+  ##### If there are no projects:
   Redirect to the project creation form.
 </details>
 
 <details>
-  <summary>Do we want to the project name/title be editable inline?</summary>
+  <summary><strong>Do we want to the project name/title be editable inline?</strong></summary>
 
-  That's a nice improvement we could easily add, using Turbo it's really easy to make an Ajax request that simply updates the model without refreshing the page. However I wouldn't bother with this for now, just focus on scaffolding the controllers and views and let's improve it after. Ideally, the app should work out of the box and we can always sprinkle some JavaScript later for a snappier UX.
+  That’s a great improvement we could easily add. With Turbo, it's simple to make an Ajax request that updates the model without needing to refresh the page. However, I’d suggest we hold off on that for now. Let's focus on scaffolding the controllers and views first, and we can improve it later. Ideally, the app should work right out of the box (without any JavaScript), and we can always add some JS later to enhance the UX.
 </details>
 
 
